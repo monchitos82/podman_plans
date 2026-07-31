@@ -1,6 +1,6 @@
 resource "podman_container" "postgresql" {
   container_host = local.container_host
-  name           = "postgresql"
+  name           = var.is_replica ? "postgresql-replica" : "postgresql"
   image          = "postgres:latest"
   
   port_mappings = [
@@ -28,7 +28,7 @@ resource "podman_container" "postgresql" {
       target  = "/var/lib/postgresql"
       source  = var.is_replica ? "${var.volume_base_path}/postgresql-replica-data/_data" : "${var.volume_base_path}/postgresql-data/_data"
       options = ["Z"]
-      type    = "volume"
+      #type    = "volume"
     }
   ]
 }
