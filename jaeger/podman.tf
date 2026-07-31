@@ -20,7 +20,7 @@ resource "podman_container" "jaeger" {
       target      = "/tmp"
       source      = "${var.volume_base_path}/jaeger-tmp/_data"
       options     = ["Z"]
-      type        = "volume"
+      type        = "bind"
     }
   ]
 }

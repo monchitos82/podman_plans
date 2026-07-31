@@ -24,7 +24,7 @@ resource "podman_container" "postgresql" {
       target  = "/var/lib/postgresql"
       source  = "${var.volume_base_path}/postgresql-data/_data"
       options = ["Z"]
-      type    = "volume"
+      type    = "bind"
     }
   ]
 }

@@ -13,7 +13,7 @@ resource "podman_container" "otel_collector" {
       target  = "/etc/"
       source  = "${var.volume_base_path}/otel-config/_data"
       options = ["Z"]
-      type    = "volume"
+      type    = "bind"
     }
   ]
 }

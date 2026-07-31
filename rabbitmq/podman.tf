@@ -13,7 +13,7 @@ resource "podman_container" "rabbitmq" {
       target  = "/var/lib/rabbitmq"
       source  = "${var.volume_base_path}/rabbitmq-data/_data"
       options = ["Z"]
-      type    = "volume"
+      type    = "bind"
     }
   ]
 }

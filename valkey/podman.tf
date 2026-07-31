@@ -17,7 +17,7 @@ resource "podman_container" "valkey" {
       target  = "/data"
       source  = "${var.volume_base_path}/valkey-data/_data"
       options = ["Z"]
-      type    = "volume"
+      type    = "bind"
     }
   ]
 }

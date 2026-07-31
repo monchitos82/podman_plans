@@ -15,13 +15,13 @@ resource "podman_container" "mongodb" {
       target  = "/data/db"
       source  = "${var.volume_base_path}/mongodb-data/_data"
       options = ["Z"]
-      type    = "volume"
+      type    = "bind"
     },
     {
       target  = "/data/configdb"
       source  = "${var.volume_base_path}/mongodb-config/_data"
       options = ["Z"]
-      type    = "volume"
+      type    = "bind"
     } 
   ]
 }
