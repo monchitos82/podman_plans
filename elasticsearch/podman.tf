@@ -1,7 +1,7 @@
 resource "podman_container" "elasticsearch" {
   container_host = local.container_host
   name           = "elasticsearch"
-  image          = "docker.elastic.co/elasticsearch/elasticsearch:9.0.3"
+  image          = "docker.elastic.co/elasticsearch/elasticsearch:9.4.4"
 
   port_mappings = [
     for port in var.elastic_ports:
@@ -22,4 +22,12 @@ resource "podman_container" "elasticsearch" {
       command = var.memory_config != null  ? "podman update --memory ${var.memory_config} ${self.name}" : "true"
   }
 
+  mounts = [
+    {
+      target  = "/usr/share/elasticsearch/data"
+      source  = "${var.volume_base_path}/elasticsearch-data/_data"
+      options = ["Z"]
+      type    = "bind"
+    }
+  ]
 }
