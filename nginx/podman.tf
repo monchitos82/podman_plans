@@ -19,7 +19,7 @@ resource "podman_container" "nginx" {
     {
       target  = "/usr/share/nginx/html"
       source  = "${var.volume_base_path}/nginx-data/_data"
-      options = ["Z"]
+      options = ["z"]
       type    = "bind"
     }
   ]
