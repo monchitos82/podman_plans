@@ -19,11 +19,11 @@ variable "postgresql_db" {
 variable "postgresql_port" {
   description = "Default postgres port"
   type        = number
-  default     = 5432
+  default     = 15432
 }
 
 variable "is_replica" {
   description = "Is the instance a replica"
   type        = bool
-  default     = false
+  default     = true
 }
