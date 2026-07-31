@@ -26,11 +26,13 @@ resource "podman_container" "influxdb" {
       target  = "/var/lib/influxdb2"
       source  = "${var.volume_base_path}/influx-data/_data"
       options = ["Z"]
+      type    = "volume"
     },
     {
       target  = "/etc/influxdb2"
       source  = "${var.volume_base_path}/influx-config/_data"
       options = ["Z"]
+      type    = "volume"
     }
   ]
 }

@@ -28,11 +28,13 @@ resource "podman_container" "kafka" {
       target      = "/var/lib/kafka/data"
       source      = "${var.volume_base_path}/kafka-data/_data"
       options     = ["Z"]
+      type        = "volume"
     },
     {
       target      = "/etc/kafka/secrets"
       source      = "${var.volume_base_path}/kafka-secrets/_data"
       options     = ["Z"]
+      type        = "volume"
     }
   ]
 }

@@ -32,11 +32,13 @@ resource "podman_container" "grafana" {
       target      = "/var/lib/grafana"
       source      = "${var.volume_base_path}/grafana-data/_data"
       options     = ["Z"]
+      type        = "volume"
     },
     {
       target      = "/usr/share/grafana/conf"
       source      = "${var.volume_base_path}/grafana-config/_data"
       options     = ["Z"]
+      type        = "volume"
     }
   ]
 }

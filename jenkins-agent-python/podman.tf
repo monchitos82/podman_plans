@@ -20,16 +20,19 @@ resource "podman_container" "jenkins-agent-python" {
       target  = "/home/jenkins/"
       source  = "${var.volume_base_path}/jenkins-agent-data/_data"
       options = ["Z"]
+      type    = "volume"
     },
     {
       target  = "/home/jenkins/agent"
       source  = "${var.volume_base_path}/jenkins-agent-agent/_data"
       options = ["Z"]
+      type    = "volume"
     },
     {
       target  = "/home/jenkins/.jenkins"
       source  = "${var.volume_base_path}/jenkins-agent-jenkins/_data"
       options = ["Z"]
+      type    = "volume"
     }  
   ]
 }

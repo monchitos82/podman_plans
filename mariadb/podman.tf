@@ -24,6 +24,7 @@ resource "podman_container" "mariadb" {
       target  = "/var/lib/mysql"
       source  = "${var.volume_base_path}/mariadb-data/_data"
       options = ["Z"]
+      type    = "volume"
     }
   ]
 }
