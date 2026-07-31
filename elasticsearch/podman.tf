@@ -4,13 +4,10 @@ resource "podman_container" "elasticsearch" {
   image          = "docker.elastic.co/elasticsearch/elasticsearch:9.0.3"
 
   port_mappings = [
+    for port in var.elastic_ports:
     {
-      container_port = var.elastic_port
-      host_port      = var.elastic_port
-    },
-    {
-      container_port = 9300
-      host_port = 9300
+      container_port = port
+      host_port      = port
     }
   ]
 
@@ -22,6 +19,7 @@ resource "podman_container" "elasticsearch" {
   }
 
   provisioner "local-exec" {
-    command = "podman update --memory 2g ${self.name}"
+      command = var.memory_config != null  ? "podman update --memory ${var.memory_config} ${self.name}" : "true"
   }
+
 }

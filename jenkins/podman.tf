@@ -4,18 +4,15 @@ resource "podman_container" "jenkins" {
   image          = "jenkins/jenkins:latest"
   
   port_mappings = [
+    for port in var.jenkins_ports:
     {
-      container_port = var.jenkins_port
-      host_port      = var.jenkins_port
-    },
-    {
-        container_port = 50000,
-        host_port      = 50000
+      container_port = port
+      host_port      = port
     }
   ]
 
   env = {
-    JENKINS_OPTS = "--httpPort=${var.jenkins_port}"
+    JENKINS_OPTS = "--httpPort=${var.default_jenkins_port}"
   }
 
   mounts = [

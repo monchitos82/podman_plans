@@ -1,7 +1,13 @@
-variable "jenkins_port" {
-  description = "Port to expose Jenkins"
+variable "default_jenkins_port" {
+  description = "Base port to expose Jenkins"
   type        = number
   default     = 10887
+}
+
+variable "jenkins_ports" {
+  description = "Ports to expose Jenkins"
+  type        = list
+  default     = [10887]
 }
 
 variable "volume_base_path" {

@@ -4,6 +4,12 @@ variable "volume_base_path" {
   default     = "/home/mon/.local/share/containers/storage/volumes"
 }
 
+variable "jaeger_ports" {
+  description = "Ports to expose for jaeger"
+  type        = list
+  default     = [16686]
+}
+
 variable "elasticsearch_host" {
   type    = string
   default = "host.containers.internal"

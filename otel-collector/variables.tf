@@ -9,3 +9,9 @@ variable "otel_image" {
   type        = string
   default     = "localhost/otel-collector:latest"
 }
+
+variable "otel_ports" {
+  description = "List of ports to map in the container"
+  type = list
+  default = [4317, 4318]
+}

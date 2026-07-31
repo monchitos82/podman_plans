@@ -4,10 +4,8 @@ resource "podman_container" "jaeger" {
   image          = "jaegertracing/jaeger:latest"
   
   port_mappings = [
-    { container_port = 16686,  host_port = 16686 },
-    { container_port = 14317,  host_port = 14317 },
-    { container_port = 14318,  host_port = 14318 },
-    { container_port = 9411,   host_port = 9411 }
+    for port in var.jaeger_ports:
+    { container_port = port,  host_port = port }
   ]
 
 

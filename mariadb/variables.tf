@@ -11,11 +11,13 @@ variable "volume_base_path" {
 }
 
 variable "mariadb_db" {
+  description "Default db name"
   type        = string
   default     = "mariadb"
 }
 
 variable "mariadb_user" {
+  description "Default db user"
   type        = string
   default     = "mariadb"
 }

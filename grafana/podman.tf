@@ -5,7 +5,7 @@ resource "podman_container" "grafana" {
   
   port_mappings = [
     {
-      container_port = 3000
+      container_port = var.grafana_port
       host_port      = var.grafana_port
     }
   ]
@@ -13,13 +13,13 @@ resource "podman_container" "grafana" {
   env = merge(
     var.use_mariadb ? {
       GF_DATABASE_TYPE = "mysql"
-      GF_DATABASE_HOST = "host.containers.internal:3306"
-      GF_DATABASE_NAME = "grafana"
-      GF_DATABASE_USER = "grafana"
+      GF_DATABASE_HOST = "${var.mariadb_host}:${var.mariadb_port}"
+      GF_DATABASE_NAME = var.mariadb_db
+      GF_DATABASE_USER = var.mariadb_user
     } : {},
     var.use_otel ? {
-      GF_TRACING_OPENTELEMETRY_OTLP_ADDRESS  = "host.containers.internal:4317"
-      GF_TRACING_OPENTELEMETRY_OTLP_INSECURE = "true"
+      GF_TRACING_OPENTELEMETRY_OTLP_ADDRESS  = "${var.otel_host}:${var.otel_port}"
+      GF_TRACING_OPENTELEMETRY_OTLP_INSECURE = var.otel_insecure
     } : {}
   )
 
