@@ -6,8 +6,10 @@ variable "volume_base_path" {
 
 variable "jaeger_ports" {
   description = "Ports to expose for jaeger"
-  type        = list
-  default     = [16686]
+  type        = map
+  default     = {
+    "16686" = "16686"
+  }
 }
 
 variable "elasticsearch_host" {
