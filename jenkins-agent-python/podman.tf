@@ -40,9 +40,18 @@ resource "podman_container" "jenkins-agent-python" {
     },
     {
       target  = "/opt/deploy/"
-      source  = "${var.volume_base_path}/nginx-data/_data"
-      options = ["Z"]
+      source  = "${var.volume_base_path}/blog-data/_data"
+      options = ["z", "rw"]
       type    = "bind"
     }  
   ]
+}
+
+// this step fixes permissions for this volume that is shared with nginx
+resource "null_resource" "fix_blog_data_permissions" {
+  depends_on = [podman_container.jenkins-agent-python]
+
+  provisioner "local-exec" {
+    command = "podman unshare chown 1000:1000 ${var.volume_base_path}/blog-data/_data"
+  }
 }
