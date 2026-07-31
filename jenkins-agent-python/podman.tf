@@ -15,6 +15,10 @@ resource "podman_container" "jenkins-agent-python" {
     "/home/jenkins/agent"
   ]
 
+  secret_env = {
+    NEOCITIES_API_KEY = "neocities_api_key"
+  }
+
   mounts = [
     {
       target  = "/home/jenkins/"
