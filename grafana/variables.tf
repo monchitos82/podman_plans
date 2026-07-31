@@ -69,3 +69,9 @@ variable "otel_insecure" {
   type        = bool
   default     = false
 }
+
+variable "no_zipkin_spans" {
+  description = "Disable shared zipkin spans"
+  type        = bool
+  default     = false
+}

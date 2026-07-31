@@ -20,6 +20,7 @@ resource "podman_container" "grafana" {
     var.use_otel ? {
       GF_TRACING_OPENTELEMETRY_OTLP_ADDRESS  = "${var.otel_host}:${var.otel_port}"
       GF_TRACING_OPENTELEMETRY_OTLP_INSECURE = var.otel_insecure
+      GF_DISABLE_SHARED_ZIPKIN_SPANS         = var.no_zipkin_spans
     } : {}
   )
 
