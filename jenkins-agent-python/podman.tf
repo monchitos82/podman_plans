@@ -33,6 +33,12 @@ resource "podman_container" "jenkins-agent-python" {
       source  = "${var.volume_base_path}/jenkins-agent-jenkins/_data"
       options = ["Z"]
       type    = "bind"
+    },
+    {
+      target  = "/opt/deploy/"
+      source  = "${var.volume_base_path}/nginx-data/_data"
+      options = ["Z"]
+      type    = "bind"
     }  
   ]
 }
