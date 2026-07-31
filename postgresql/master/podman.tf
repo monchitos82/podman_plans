@@ -1,6 +1,6 @@
 resource "podman_container" "postgresql" {
   container_host = local.container_host
-  name           = var.is_replica ? "postgresql-replica" : "postgresql"
+  name           = "postgresql"
   image          = "postgres:latest"
   
   port_mappings = [
@@ -10,11 +10,7 @@ resource "podman_container" "postgresql" {
     }
   ]
 
-  env = var.is_replica ? {
-    POSTGRES_DB   = var.postgresql_db
-    POSTGRES_USER = var.postgresql_user
-    PGDATA        = "/var/lib/postgresql/data"
-  } : {
+  env = {
     POSTGRES_DB   = var.postgresql_db
     POSTGRES_USER = var.postgresql_user
   }
@@ -26,9 +22,9 @@ resource "podman_container" "postgresql" {
   mounts = [
     {
       target  = "/var/lib/postgresql"
-      source  = var.is_replica ? "${var.volume_base_path}/postgresql-replica-data/_data" : "${var.volume_base_path}/postgresql-data/_data"
+      source  = "${var.volume_base_path}/postgresql-data/_data"
       options = ["Z"]
-      #type    = "volume"
+      type    = "volume"
     }
   ]
 }
