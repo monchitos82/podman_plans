@@ -19,8 +19,8 @@ resource "podman_container" "jenkins" {
     {
       target  = "/var/jenkins_home"
       source  = "${var.volume_base_path}/jenkins-data/_data"
-      options = ["Z"]
       type    = "bind"
+      options = ["Z"]
     }
   ]
 }
