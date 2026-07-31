@@ -23,6 +23,7 @@ resource "podman_container" "ollama" {
     OLLAMA_VULKAN          = var.ollama_vulkan
     OLLAMA_NUM_PARALLEL    = var.ollama_num_parallel
     OLLAMA_CONTEXT_LENGTH  = var.ollama_context_length
+    OLLAMA_IGPU_ENABLE     = var.ollama_igpu_enable
 }
 
 

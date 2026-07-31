@@ -46,6 +46,12 @@ variable "ollama_context_length" {
   default     = "4096"
 }
 
+variable "ollama_igpu_enable" {
+  description = "Use internal GPU"
+  type        = string
+  default     = "1"
+}
+
 variable "ollama_use_gpu" {
   description = "Use host GPUs"
   type        = bool
