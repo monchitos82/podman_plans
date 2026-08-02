@@ -21,7 +21,10 @@ resource "podman_container" "grafana" {
       GF_TRACING_OPENTELEMETRY_OTLP_ADDRESS  = "${var.otel_host}:${var.otel_port}"
       GF_TRACING_OPENTELEMETRY_OTLP_INSECURE = var.otel_insecure
       GF_DISABLE_SHARED_ZIPKIN_SPANS         = var.no_zipkin_spans
-    } : {}
+    } : {},
+    {
+      # use for all other variables
+    }
   )
 
   secret_env = var.use_mariadb ? {
@@ -32,6 +35,12 @@ resource "podman_container" "grafana" {
     {
       target      = "/var/lib/grafana"
       source      = "${var.volume_base_path}/grafana-data/_data"
+      options     = ["Z"]
+      type        = "bind"
+    },
+    {
+      target      = "/usr/share/grafana/data"
+      source      = "${var.volume_base_path}/grafana-plugins/_data"
       options     = ["Z"]
       type        = "bind"
     }
