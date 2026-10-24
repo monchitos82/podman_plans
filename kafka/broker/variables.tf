@@ -28,3 +28,9 @@ variable kafka_cluster {
   type    = string
   default = "kafka_cluster"
 }
+
+variable "memory_config" {
+  description = "Memory config for the container"
+  type        = string
+  default     = null
+}
