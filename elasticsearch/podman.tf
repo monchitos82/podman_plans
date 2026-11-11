@@ -1,7 +1,7 @@
 resource "podman_container" "elasticsearch" {
   container_host = local.container_host
   name           = "elasticsearch"
-  image          = "docker.elastic.co/elasticsearch/elasticsearch:9.4.4"
+  image          = "docker.elastic.co/elasticsearch/elasticsearch:9.5.5"
 
   port_mappings = [
     for port in var.elastic_ports:

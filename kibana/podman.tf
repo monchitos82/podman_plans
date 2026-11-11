@@ -1,7 +1,7 @@
 resource "podman_container" "kibana" {
   container_host = local.container_host
   name           = "kibana"
-  image          = "docker.elastic.co/kibana/kibana:9.4.4"
+  image          = "docker.elastic.co/kibana/kibana:9.5.5"
 
   port_mappings = [
     for port in var.kibana_ports:
