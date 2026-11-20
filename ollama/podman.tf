@@ -31,7 +31,7 @@ resource "podman_container" "ollama" {
     {
       target  = "/root/.ollama"
       source  = "${var.volume_base_path}/ollama-data/_data"
-      options = ["Z"]
+      options = ["z", "U"]
       type    = "bind"
     }
   ]

@@ -17,6 +17,7 @@ resource "podman_container" "mariadb" {
 
   secret_env = {
     MYSQL_PASSWORD = "mysql_password"
+    MARIADB_ROOT_PASSWORD = "mysql_root_password"
   }
 
   mounts = [

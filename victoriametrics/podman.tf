@@ -19,7 +19,7 @@ resource "podman_container" "victoriametrics" {
     {
       target  = "/storage"
       source  = "${var.volume_base_path}/victoriametrics/_data"
-      options = ["Z"]
+      options = ["z", "U"]
       type    = "bind"
     }
   ]

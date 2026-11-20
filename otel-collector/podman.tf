@@ -10,9 +10,9 @@ resource "podman_container" "otel_collector" {
 
   mounts = [
     {
-      target  = "/etc/"
+      target  = "/etc"
       source  = "${var.volume_base_path}/otel-config/_data"
-      options = ["Z"]
+      options = ["z", "U"]
       type    = "bind"
     }
   ]

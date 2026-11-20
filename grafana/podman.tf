@@ -35,13 +35,13 @@ resource "podman_container" "grafana" {
     {
       target      = "/var/lib/grafana"
       source      = "${var.volume_base_path}/grafana-data/_data"
-      options     = ["Z"]
+      options     = ["z", "U"]
       type        = "bind"
     },
     {
       target      = "/usr/share/grafana/data"
       source      = "${var.volume_base_path}/grafana-plugins/_data"
-      options     = ["Z"]
+      options     = ["z", "U"]
       type        = "bind"
     }
   ]

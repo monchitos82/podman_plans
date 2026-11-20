@@ -26,7 +26,7 @@ resource "podman_container" "elasticsearch" {
     {
       target  = "/usr/share/elasticsearch/data"
       source  = "${var.volume_base_path}/elasticsearch-data/_data"
-      options = ["Z"]
+      options = ["z", "U"]
       type    = "bind"
     }
   ]

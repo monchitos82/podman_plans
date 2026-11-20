@@ -11,12 +11,6 @@ resource "podman_container" "nginx" {
 
   mounts = [
     {
-      target      = "/etc/nginx"
-      source      = "${var.volume_base_path}/nginx-config/_data"
-      options     = ["Z"]
-      type        = "bind"
-    },
-    {
       target  = "/usr/share/nginx/html/"
       source  = "${var.volume_base_path}/blog-data/_data"
       options = ["z", "ro"]
