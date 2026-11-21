@@ -5,7 +5,10 @@ variable "volume_base_path" {
 }
 
 variable "prometheus_ports" {
-  description = "Ports to expose for jaeger"
-  type        = list
-  default     = [9090]
+  description = "Ports to expose for prometheus"
+  type        = map
+  default     = {
+    "9090" = "9090"
+  }
 }
+

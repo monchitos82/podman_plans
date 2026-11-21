@@ -4,21 +4,22 @@ resource "podman_container" "prometheus" {
   image          = "prom/prometheus:latest"
   
   port_mappings = [
-    for port in var.prometheus_ports:
-    { container_port = port,  host_port = port }
+    for key, value in var.prometheus_ports:
+    { container_port = key,  host_port = value }
   ]
+
 
   mounts = [
     {
       target      = "/prometheus"
       source      = "${var.volume_base_path}/prometheus-data/_data"
-      options     = ["Z"]
+      options     = ["z", "U"]
       type        = "bind"
     },
     {
       target      = "/etc/prometheus"
       source      = "${var.volume_base_path}/prometheus-config/_data"
-      options     = ["Z"]
+      options     = ["z", "U"]
       type        = "bind"
     }
   ]
