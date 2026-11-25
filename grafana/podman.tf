@@ -21,6 +21,7 @@ resource "podman_container" "grafana" {
       GF_TRACING_OPENTELEMETRY_OTLP_ADDRESS  = "${var.otel_host}:${var.otel_port}"
       GF_TRACING_OPENTELEMETRY_OTLP_INSECURE = var.otel_insecure
       GF_DISABLE_SHARED_ZIPKIN_SPANS         = var.no_zipkin_spans
+      GF_FEATURE_TOGGLES_ENABLE              = "jaegerEnableGrpcEndpoint"
     } : {},
     {
       # use for all other variables
