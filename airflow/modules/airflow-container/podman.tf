@@ -17,6 +17,7 @@ resource "podman_container" "airflow" {
     AIRFLOW__API__HOST                                     = var.airflow_api_host
     AIRFLOW__API__PORT                                     = var.airflow_api_port
     AIRFLOW__API__WORKERS                                  = var.airflow_api_workers
+    AIRFLOW__API__EXPOSE_CONFIG                            = var.airflow_api_expose_config
     AIRFLOW__SCHEDULER__SCHEDULER_HEALTH_CHECK_SERVER_HOST = var.airflow_scheduler_host
     AIRFLOW__CELERY__BROKER_URL                            = var.airflow_celery_broker_url
     AIRFLOW__CELERY__FLOWER_HOST                           = var.airflow_celery_flower_host

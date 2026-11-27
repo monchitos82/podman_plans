@@ -23,7 +23,7 @@ resource "podman_container" "kibana" {
     {
       target  = "/usr/share/kibana/data"
       source  = "${var.volume_base_path}/kibana-data/_data"
-      options = ["Z"]
+      options = ["z", "U"]
       type    = "bind"
     }
   ]

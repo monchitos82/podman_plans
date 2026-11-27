@@ -79,6 +79,12 @@ variable "airflow_api_workers" {
   default     = 4
 }
 
+variable "airflow_api_expose_config" {
+  description = "Show Airflow config in the UI"
+  type        = bool
+  default     = true
+}
+
 variable "airflow_scheduler_host" {
   description = "Airflow Scheduler healthcheck server host"
   type        = string
